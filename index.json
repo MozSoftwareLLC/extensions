@@ -1,0 +1,31 @@
+{
+  "extensions": [
+    {
+      "id": "server-kavita",
+      "name": "Kavita Server",
+      "description": "Connect to your Kavita media server",
+      "version": "1.0.0",
+      "type": "server",
+      "protocolVersion": 1,
+      "bundleUrl": "https://mozsoftwarellc.github.io/extensions/server-kavita/"
+    },
+    {
+      "id": "server-komga",
+      "name": "Komga Server",
+      "description": "Connect to your Komga media server",
+      "version": "0.1.0",
+      "type": "server",
+      "protocolVersion": 1,
+      "bundleUrl": "https://mozsoftwarellc.github.io/extensions/server-komga/"
+    },
+    {
+      "id": "server-opds",
+      "name": "OPDS Feed",
+      "description": "Connect to an OPDS catalog feed",
+      "version": "0.1.0",
+      "type": "server",
+      "protocolVersion": 1,
+      "bundleUrl": "https://mozsoftwarellc.github.io/extensions/server-opds/"
+    }
+  ]
+}

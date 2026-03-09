@@ -1,0 +1,28 @@
+{
+  "id": "server-opds",
+  "name": "OPDS Feed",
+  "description": "Connect to an OPDS catalog feed",
+  "version": "0.1.0",
+  "protocolVersion": 1,
+  "type": "server",
+  "serverType": "opds",
+  "capabilities": ["network:server-url", "storage:settings"],
+  "entryPoint": "extension.js",
+  "settings": [
+    {
+      "key": "serverUrl",
+      "type": "text",
+      "label": "Feed URL"
+    },
+    {
+      "key": "username",
+      "type": "text",
+      "label": "Username"
+    },
+    {
+      "key": "password",
+      "type": "password",
+      "label": "Password"
+    }
+  ]
+}

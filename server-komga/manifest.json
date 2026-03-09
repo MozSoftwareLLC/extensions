@@ -1,0 +1,33 @@
+{
+  "id": "server-komga",
+  "name": "Komga Server",
+  "description": "Connect to your Komga media server",
+  "version": "0.1.0",
+  "protocolVersion": 1,
+  "type": "server",
+  "serverType": "komga",
+  "capabilities": ["network:server-url", "storage:settings"],
+  "entryPoint": "extension.js",
+  "settings": [
+    {
+      "key": "serverUrl",
+      "type": "text",
+      "label": "Server URL"
+    },
+    {
+      "key": "apiKey",
+      "type": "password",
+      "label": "API Key"
+    },
+    {
+      "key": "username",
+      "type": "text",
+      "label": "Username"
+    },
+    {
+      "key": "password",
+      "type": "password",
+      "label": "Password"
+    }
+  ]
+}

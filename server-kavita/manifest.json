@@ -1,0 +1,23 @@
+{
+  "id": "server-kavita",
+  "name": "Kavita Server",
+  "description": "Connect to your Kavita media server",
+  "version": "1.0.0",
+  "protocolVersion": 1,
+  "type": "server",
+  "serverType": "kavita",
+  "capabilities": ["network:server-url", "storage:settings"],
+  "entryPoint": "extension.js",
+  "settings": [
+    {
+      "key": "serverUrl",
+      "type": "text",
+      "label": "Server URL"
+    },
+    {
+      "key": "apiKey",
+      "type": "password",
+      "label": "API Key"
+    }
+  ]
+}

@@ -13,10 +13,11 @@
       "id": "server-komga",
       "name": "Komga Server",
       "description": "Connect to your Komga media server",
-      "version": "0.1.0",
+      "version": "0.1.6",
       "type": "server",
       "protocolVersion": 1,
-      "bundleUrl": "https://mozsoftwarellc.github.io/extensions/server-komga/"
+      "bundleUrl": "https://mozsoftwarellc.github.io/extensions/server-komga/",
+      "icon": "https://mozsoftwarellc.github.io/extensions/server-komga/komga.svg"
     },
     {
       "id": "server-opds",

@@ -2,12 +2,13 @@
   "id": "server-komga",
   "name": "Komga Server",
   "description": "Connect to your Komga media server",
-  "version": "0.1.0",
+  "version": "0.1.6",
   "protocolVersion": 1,
   "type": "server",
   "serverType": "komga",
   "capabilities": ["network:server-url", "storage:settings"],
   "entryPoint": "extension.js",
+  "icon": "komga.svg",
   "settings": [
     {
       "key": "serverUrl",

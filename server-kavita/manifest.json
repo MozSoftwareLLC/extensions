@@ -2,12 +2,14 @@
   "id": "server-kavita",
   "name": "Kavita Server",
   "description": "Connect to your Kavita media server",
-  "version": "1.0.0",
+  "version": "1.0.10",
   "protocolVersion": 1,
   "type": "server",
   "serverType": "kavita",
   "capabilities": ["network:server-url", "storage:settings"],
+  "features": ["bulk-import"],
   "entryPoint": "extension.js",
+  "icon": "kavita.png",
   "settings": [
     {
       "key": "serverUrl",
@@ -19,5 +21,24 @@
       "type": "password",
       "label": "API Key"
     }
-  ]
+  ],
+  "network": {
+    "credentialQueryParams": [
+      {
+        "path": "/api/Image/series-cover",
+        "settingKey": "apiKey",
+        "param": "apiKey"
+      },
+      {
+        "path": "/api/Image/chapter-cover",
+        "settingKey": "apiKey",
+        "param": "apiKey"
+      },
+      {
+        "path": "/api/Reader/image",
+        "settingKey": "apiKey",
+        "param": "apiKey"
+      }
+    ]
+  }
 }

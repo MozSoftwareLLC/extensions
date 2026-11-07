@@ -2,12 +2,14 @@
   "id": "server-opds",
   "name": "OPDS Feed",
   "description": "Connect to an OPDS catalog feed",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "protocolVersion": 1,
   "type": "server",
   "serverType": "opds",
   "capabilities": ["network:server-url", "storage:settings"],
+  "features": ["bulk-import"],
   "entryPoint": "extension.js",
+  "icon": "icon.png",
   "settings": [
     {
       "key": "serverUrl",

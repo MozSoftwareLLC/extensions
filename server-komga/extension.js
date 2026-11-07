@@ -1,6 +1,61 @@
 "use strict";
 (() => {
   // extensions/komga/src/api.ts
+  var SUPPORTED_EXTENSIONS = /* @__PURE__ */ new Set(["epub", "pdf"]);
+  var GENERIC_MIME_TYPES = /* @__PURE__ */ new Set([
+    "application/octet-stream",
+    "binary/octet-stream",
+    "application/binary",
+    "application/download",
+    "application/force-download",
+    "application/x-download",
+    "application/zip"
+  ]);
+  var SUPPORTED_MIME_TYPES = /* @__PURE__ */ new Set([
+    "application/epub+zip",
+    "application/epub",
+    "application/pdf"
+  ]);
+  var UNSUPPORTED_MIME_TYPES = /* @__PURE__ */ new Set([
+    "application/x-mobipocket-ebook",
+    "application/vnd.amazon.ebook",
+    "application/vnd.comicbook+zip",
+    "application/vnd.comicbook-rar",
+    "application/x-cbz",
+    "application/x-cbr"
+  ]);
+  function getPathExtension(value) {
+    if (!value) return null;
+    try {
+      const parsed = new URL(value, "https://example.invalid");
+      const match = parsed.pathname.toLowerCase().match(/\.([a-z][a-z0-9]{1,7})$/);
+      return match?.[1] ?? null;
+    } catch {
+      const [path] = value.split(/[?#]/);
+      const match = path.toLowerCase().match(/\.([a-z][a-z0-9]{1,7})$/);
+      return match?.[1] ?? null;
+    }
+  }
+  function classifyKomgaBookFile(book) {
+    const extension2 = getPathExtension(book.url) ?? getPathExtension(book.name);
+    if (extension2) {
+      return SUPPORTED_EXTENSIONS.has(extension2) ? "supported" : "unsupported";
+    }
+    const normalizedMime = book.media?.mediaType?.split(";")[0]?.trim().toLowerCase();
+    if (!normalizedMime) {
+      return "unknown";
+    }
+    if (SUPPORTED_MIME_TYPES.has(normalizedMime)) {
+      return "supported";
+    }
+    if (UNSUPPORTED_MIME_TYPES.has(normalizedMime) || !GENERIC_MIME_TYPES.has(normalizedMime)) {
+      return "unsupported";
+    }
+    return "unknown";
+  }
+  function isAllowedKomgaBook(book) {
+    return classifyKomgaBookFile(book) !== "unsupported";
+  }
   function parseLibraries(json) {
     const arr = json;
     return arr.map((lib) => ({
@@ -41,9 +96,13 @@
   function getKomgaBookTitle(book) {
     return getTrimmedString(book.metadata?.title) || getTrimmedString(book.name) || getTrimmedString(book.seriesTitle) || book.id;
   }
+  function hasKomgaBookContent(json) {
+    const page = json;
+    return Array.isArray(page.content) && page.content.length > 0;
+  }
   function parseBookListingItems(json) {
     const page = json;
-    return (page.content ?? []).map((book) => {
+    return (page.content ?? []).filter(isAllowedKomgaBook).map((book) => {
       const metadata = {
         resultType: "komga-book"
       };
@@ -83,7 +142,7 @@
   }
   function parseBooks(json) {
     const page = json;
-    return (page.content ?? []).map((book) => ({
+    return (page.content ?? []).filter(isAllowedKomgaBook).map((book) => ({
       id: book.id,
       title: getKomgaBookTitle(book),
       coverUrl: `/api/v1/books/${encodeURIComponent(book.id)}/thumbnail`,
@@ -410,7 +469,7 @@
   var extension = {
     id: "server-komga",
     name: "Komga Server",
-    version: "0.1.6",
+    version: "0.1.8",
     type: "server",
     serverType: "komga",
     async activate(_config) {
@@ -481,6 +540,9 @@
       const chapters = parseBooks(json);
       if (chapters.length > 0) {
         return chapters;
+      }
+      if (hasKomgaBookContent(json)) {
+        return [];
       }
       const directBookJson = await komgaFetch(
         `/api/v1/books/${encodeURIComponent(itemId)}`,

@@ -4,29 +4,79 @@
       "id": "server-kavita",
       "name": "Kavita Server",
       "description": "Connect to your Kavita media server",
-      "version": "1.0.0",
+      "version": "1.0.10",
       "type": "server",
       "protocolVersion": 1,
-      "bundleUrl": "https://mozsoftwarellc.github.io/extensions/server-kavita/"
+      "bundleUrl": "server-kavita/",
+      "sha256": "b314988fd53196c9cd4d0ff452cc8da13aade38fd4f726e0ce0dd73f05d87fb0",
+      "developerName": "NovelReader",
+      "supportUrl": "https://novelreader.mozsoftware.dev/support/",
+      "contentRatingMinimumAge": 18,
+      "contentWarnings": [
+        "Third-party extension software can access user-configured content services through the NovelReader sandbox."
+      ],
+      "capabilities": [
+        "network:server-url",
+        "storage:settings"
+      ],
+      "allowedHosts": [],
+      "universalLink": "https://novelreader.mozsoftware.dev/extensions/server-kavita/",
+      "privacyPolicyUrl": "https://novelreader.mozsoftware.dev/privacy/",
+      "termsUrl": "https://novelreader.mozsoftware.dev/terms/",
+      "homepageUrl": "https://novelreader.mozsoftware.dev/extensions/server-kavita/",
+      "icon": "server-kavita/kavita.png"
     },
     {
       "id": "server-komga",
       "name": "Komga Server",
       "description": "Connect to your Komga media server",
-      "version": "0.1.6",
+      "version": "0.1.8",
       "type": "server",
       "protocolVersion": 1,
-      "bundleUrl": "https://mozsoftwarellc.github.io/extensions/server-komga/",
-      "icon": "https://mozsoftwarellc.github.io/extensions/server-komga/komga.svg"
+      "bundleUrl": "server-komga/",
+      "sha256": "ceec5d3b52ffdeb7aaa8f91d306b135cbbfc191235477665642e622ebac44918",
+      "developerName": "NovelReader",
+      "supportUrl": "https://novelreader.mozsoftware.dev/support/",
+      "contentRatingMinimumAge": 18,
+      "contentWarnings": [
+        "Third-party extension software can access user-configured content services through the NovelReader sandbox."
+      ],
+      "capabilities": [
+        "network:server-url",
+        "storage:settings"
+      ],
+      "allowedHosts": [],
+      "universalLink": "https://novelreader.mozsoftware.dev/extensions/server-komga/",
+      "privacyPolicyUrl": "https://novelreader.mozsoftware.dev/privacy/",
+      "termsUrl": "https://novelreader.mozsoftware.dev/terms/",
+      "homepageUrl": "https://novelreader.mozsoftware.dev/extensions/server-komga/",
+      "icon": "server-komga/komga.svg"
     },
     {
       "id": "server-opds",
       "name": "OPDS Feed",
       "description": "Connect to an OPDS catalog feed",
-      "version": "0.1.0",
+      "version": "1.0.1",
       "type": "server",
       "protocolVersion": 1,
-      "bundleUrl": "https://mozsoftwarellc.github.io/extensions/server-opds/"
+      "bundleUrl": "server-opds/",
+      "sha256": "368c43ae1563e251e2966a894a4344c8647c68d81d9eb5f0a4330a1385ecb6be",
+      "developerName": "NovelReader",
+      "supportUrl": "https://novelreader.mozsoftware.dev/support/",
+      "contentRatingMinimumAge": 18,
+      "contentWarnings": [
+        "Third-party extension software can access user-configured content services through the NovelReader sandbox."
+      ],
+      "capabilities": [
+        "network:server-url",
+        "storage:settings"
+      ],
+      "allowedHosts": [],
+      "universalLink": "https://novelreader.mozsoftware.dev/extensions/server-opds/",
+      "privacyPolicyUrl": "https://novelreader.mozsoftware.dev/privacy/",
+      "termsUrl": "https://novelreader.mozsoftware.dev/terms/",
+      "homepageUrl": "https://novelreader.mozsoftware.dev/extensions/server-opds/",
+      "icon": "server-opds/icon.png"
     }
   ]
 }

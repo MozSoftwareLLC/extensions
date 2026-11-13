@@ -2,7 +2,7 @@
   "id": "server-opds",
   "name": "OPDS Feed",
   "description": "Connect to an OPDS catalog feed",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "protocolVersion": 1,
   "type": "server",
   "serverType": "opds",

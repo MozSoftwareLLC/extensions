@@ -4525,7 +4525,7 @@
   var extension = {
     id: "server-opds",
     name: "OPDS Feed",
-    version: "1.0.1",
+    version: "1.0.2",
     type: "server",
     serverType: "opds",
     async activate(config) {

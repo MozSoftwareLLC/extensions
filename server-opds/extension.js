@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  // node_modules/.bun/fast-xml-parser@5.11.2/node_modules/fast-xml-parser/src/util.js
+  // node_modules/.bun/fast-xml-parser@5.12.0/node_modules/fast-xml-parser/src/util.js
   var nameStartChar = ":A-Za-z_\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD";
   var nameChar = nameStartChar + "\\-.\\d\\u00B7\\u0300-\\u036F\\u203F-\\u2040";
   var nameRegexp = "[" + nameStartChar + "][" + nameChar + "]*";
@@ -41,7 +41,7 @@
   ];
   var criticalProperties = ["__proto__", "constructor", "prototype"];
 
-  // node_modules/.bun/fast-xml-parser@5.11.2/node_modules/fast-xml-parser/src/validator.js
+  // node_modules/.bun/fast-xml-parser@5.12.0/node_modules/fast-xml-parser/src/validator.js
   var defaultOptions = {
     allowBooleanAttributes: false,
     //A tag can have attributes without any value
@@ -885,7 +885,7 @@
     }
   };
 
-  // node_modules/.bun/fast-xml-parser@5.11.2/node_modules/fast-xml-parser/src/xmlparser/OptionsBuilder.js
+  // node_modules/.bun/fast-xml-parser@5.12.0/node_modules/fast-xml-parser/src/xmlparser/OptionsBuilder.js
   var defaultOnDangerousProperty = (name) => {
     if (DANGEROUS_PROPERTY_NAMES.includes(name)) {
       return "__" + name;
@@ -1020,7 +1020,7 @@
     return built;
   };
 
-  // node_modules/.bun/fast-xml-parser@5.11.2/node_modules/fast-xml-parser/src/xmlparser/xmlNode.js
+  // node_modules/.bun/fast-xml-parser@5.12.0/node_modules/fast-xml-parser/src/xmlparser/xmlNode.js
   var METADATA_SYMBOL;
   if (typeof Symbol !== "function") {
     METADATA_SYMBOL = "@@xmlMetadata";
@@ -1091,7 +1091,7 @@
   };
   var qName = (str, { xmlVersion = "1.0", asciiOnly = false } = {}) => getRegexes(xmlVersion, asciiOnly).qName.test(str);
 
-  // node_modules/.bun/fast-xml-parser@5.11.2/node_modules/fast-xml-parser/src/xmlparser/DocTypeReader.js
+  // node_modules/.bun/fast-xml-parser@5.12.0/node_modules/fast-xml-parser/src/xmlparser/DocTypeReader.js
   var DocTypeReader = class {
     constructor(options, xmlVersion) {
       this.suppressValidationErr = !options;
@@ -1610,7 +1610,7 @@
   }
   var anynum_default = anynum;
 
-  // node_modules/.bun/strnum@2.4.2/node_modules/strnum/strnum.js
+  // node_modules/.bun/strnum@2.5.1/node_modules/strnum/strnum.js
   var hexRegex = /^[-+]?0x[a-fA-F0-9]+$/;
   var binRegex = /^0b[01]+$/;
   var octRegex = /^0o[0-7]+$/;
@@ -1645,7 +1645,9 @@
     } else if (options.octal && octRegex.test(trimmedStr)) {
       return parse_int(trimmedStr, 8);
     } else if (!isFinite(trimmedStr)) {
-      return handleInfinity(str, Number(trimmedStr), options);
+      const num = Number(trimmedStr);
+      if (Number.isNaN(num)) return str;
+      return handleInfinity(str, num, options);
     } else if (trimmedStr.includes("e") || trimmedStr.includes("E")) {
       return resolveEnotation(str, trimmedStr, options);
     } else {
@@ -1656,8 +1658,8 @@
         let numTrimmedByZeros = trimZeros(match[3]);
         const decimalAdjacentToLeadingZeros = sign ? (
           // 0., -00., 000.
-          str[leadingZeros.length + 1] === "."
-        ) : str[leadingZeros.length] === ".";
+          trimmedStr[leadingZeros.length + 1] === "."
+        ) : trimmedStr[leadingZeros.length] === ".";
         if (!options.leadingZeros && (leadingZeros.length > 1 || leadingZeros.length === 1 && !decimalAdjacentToLeadingZeros)) {
           return str;
         } else {
@@ -1695,14 +1697,13 @@
       const leadingZeros = notation[2];
       const eAdjacentToLeadingZeros = sign ? (
         // 0E.
-        str[leadingZeros.length + 1] === eChar
-      ) : str[leadingZeros.length] === eChar;
+        trimmedStr[leadingZeros.length + 1] === eChar
+      ) : trimmedStr[leadingZeros.length] === eChar;
       if (leadingZeros.length > 1 && eAdjacentToLeadingZeros) return str;
       else if (leadingZeros.length === 1 && (notation[3].startsWith(`.${eChar}`) || notation[3][0] === eChar)) {
         return Number(trimmedStr);
       } else if (leadingZeros.length > 0) {
         if (options.leadingZeros && !eAdjacentToLeadingZeros) {
-          trimmedStr = (notation[1] || "") + notation[3];
           return Number(trimmedStr);
         } else return str;
       } else {
@@ -1748,7 +1749,7 @@
     }
   }
 
-  // node_modules/.bun/fast-xml-parser@5.11.2/node_modules/fast-xml-parser/src/ignoreAttributes.js
+  // node_modules/.bun/fast-xml-parser@5.12.0/node_modules/fast-xml-parser/src/ignoreAttributes.js
   function getIgnoreAttributesFn(ignoreAttributes) {
     if (typeof ignoreAttributes === "function") {
       return ignoreAttributes;
@@ -2617,7 +2618,7 @@
     }
   };
 
-  // node_modules/.bun/is-unsafe@2.0.2/node_modules/is-unsafe/src/contexts/html.js
+  // node_modules/.bun/is-unsafe@2.0.3/node_modules/is-unsafe/src/contexts/html.js
   var HTML_PATTERNS = [
     {
       id: "html-script-open",
@@ -2710,7 +2711,7 @@
   ];
   var html_default = HTML_PATTERNS;
 
-  // node_modules/.bun/is-unsafe@2.0.2/node_modules/is-unsafe/src/contexts/xml.js
+  // node_modules/.bun/is-unsafe@2.0.3/node_modules/is-unsafe/src/contexts/xml.js
   var XML_PATTERNS = [
     {
       id: "xml-cdata-injection",
@@ -2778,7 +2779,7 @@
   ];
   var xml_default = XML_PATTERNS;
 
-  // node_modules/.bun/is-unsafe@2.0.2/node_modules/is-unsafe/src/contexts/svg.js
+  // node_modules/.bun/is-unsafe@2.0.3/node_modules/is-unsafe/src/contexts/svg.js
   var SVG_PATTERNS = [
     {
       id: "svg-script-element",
@@ -2850,7 +2851,7 @@
   ];
   var svg_default = SVG_PATTERNS;
 
-  // node_modules/.bun/is-unsafe@2.0.2/node_modules/is-unsafe/src/contexts/sql.js
+  // node_modules/.bun/is-unsafe@2.0.3/node_modules/is-unsafe/src/contexts/sql.js
   var SQL_PATTERNS = [
     {
       id: "sql-block-comment-open",
@@ -2932,7 +2933,7 @@
   ];
   var sql_default = SQL_PATTERNS;
 
-  // node_modules/.bun/is-unsafe@2.0.2/node_modules/is-unsafe/src/contexts/shell.js
+  // node_modules/.bun/is-unsafe@2.0.3/node_modules/is-unsafe/src/contexts/shell.js
   var SHELL_PATTERNS = [
     {
       id: "shell-path-traversal-unix",
@@ -3030,7 +3031,7 @@
   ];
   var shell_default = SHELL_PATTERNS;
 
-  // node_modules/.bun/is-unsafe@2.0.2/node_modules/is-unsafe/src/contexts/redos.js
+  // node_modules/.bun/is-unsafe@2.0.3/node_modules/is-unsafe/src/contexts/redos.js
   var REDOS_PATTERNS = [
     {
       id: "redos-nested-quantifier-plus",
@@ -3079,7 +3080,7 @@
   ];
   var redos_default = REDOS_PATTERNS;
 
-  // node_modules/.bun/is-unsafe@2.0.2/node_modules/is-unsafe/src/contexts/nosql.js
+  // node_modules/.bun/is-unsafe@2.0.3/node_modules/is-unsafe/src/contexts/nosql.js
   var sep = `["'\\s]*:`;
   var NOSQL_PATTERNS = [
     // ─── MongoDB $ operator injection ────────────────────────────────────────
@@ -3169,7 +3170,7 @@
   ];
   var nosql_default = NOSQL_PATTERNS;
 
-  // node_modules/.bun/is-unsafe@2.0.2/node_modules/is-unsafe/src/contexts/log.js
+  // node_modules/.bun/is-unsafe@2.0.3/node_modules/is-unsafe/src/contexts/log.js
   var LOG_PATTERNS = [
     // ─── CRLF / newline injection ─────────────────────────────────────────────
     {
@@ -3243,7 +3244,7 @@
   ];
   var log_default = LOG_PATTERNS;
 
-  // node_modules/.bun/is-unsafe@2.0.2/node_modules/is-unsafe/src/contexts/sql-strict.js
+  // node_modules/.bun/is-unsafe@2.0.3/node_modules/is-unsafe/src/contexts/sql-strict.js
   var SQL_STRICT_EXTRA = [
     {
       id: "sql-line-comment",
@@ -3264,10 +3265,32 @@
   var SQL_STRICT_PATTERNS = [...sql_default, ...SQL_STRICT_EXTRA];
   var sql_strict_default = SQL_STRICT_PATTERNS;
 
-  // node_modules/.bun/is-unsafe@2.0.2/node_modules/is-unsafe/src/index.js
+  // node_modules/.bun/is-unsafe@2.0.3/node_modules/is-unsafe/src/util/decode-entities.js
+  var NAMED = Object.freeze({
+    colon: ":",
+    Tab: "	",
+    NewLine: "\n"
+  });
+  var ENTITY_RE = /&(?:#[xX]0*([0-9a-fA-F]{1,6});?|#0*([0-9]{1,7});?|([a-zA-Z][a-zA-Z0-9]{1,15});)/g;
+  function decodeEntities(input) {
+    if (input.indexOf("&") === -1) return input;
+    return input.replace(ENTITY_RE, (match, hex, dec, name) => {
+      if (name !== void 0) {
+        return Object.prototype.hasOwnProperty.call(NAMED, name) ? NAMED[name] : match;
+      }
+      const cp = hex !== void 0 ? parseInt(hex, 16) : parseInt(dec, 10);
+      if (!Number.isFinite(cp) || cp > 1114111) return match;
+      return String.fromCodePoint(cp);
+    });
+  }
+
+  // node_modules/.bun/is-unsafe@2.0.3/node_modules/is-unsafe/src/index.js
   html_default.label = "HTML";
   xml_default.label = "XML";
   svg_default.label = "SVG";
+  html_default.decodeEntities = true;
+  xml_default.decodeEntities = true;
+  svg_default.decodeEntities = true;
   sql_default.label = "SQL";
   sql_strict_default.label = "SQL-STRICT";
   shell_default.label = "SHELL";
@@ -3318,10 +3341,16 @@
     if (Array.isArray(context[0])) return { lists: context, regex: null };
     return { lists: [context], regex: null };
   }
+  function decodedCopy(value, list) {
+    if (!list.decodeEntities) return null;
+    const decoded = decodeEntities(value);
+    return decoded === value ? null : decoded;
+  }
   function matchList(value, list) {
     const label = list.label ?? "CUSTOM";
+    const decoded = decodedCopy(value, list);
     for (const rule of list) {
-      if (rule.pattern.test(value)) {
+      if (rule.pattern.test(value) || decoded !== null && rule.pattern.test(decoded)) {
         return { context: label, id: rule.id, description: rule.description, pattern: rule.pattern };
       }
     }
@@ -3338,7 +3367,7 @@
     return false;
   }
 
-  // node_modules/.bun/fast-xml-parser@5.11.2/node_modules/fast-xml-parser/src/xmlparser/OrderedObjParser.js
+  // node_modules/.bun/fast-xml-parser@5.12.0/node_modules/fast-xml-parser/src/xmlparser/OrderedObjParser.js
   function extractRawAttributes(prefixedAttrs, options) {
     if (!prefixedAttrs) return {};
     const attrs = options.attributesGroupName ? prefixedAttrs[options.attributesGroupName] : prefixedAttrs;
@@ -3526,7 +3555,14 @@
     }
   }
   var parseXml = function(xmlData) {
-    xmlData = xmlData.replace(/\r\n?/g, "\n");
+    const options = this.options;
+    const crlfPositions = options.captureMetaData ? [] : void 0;
+    xmlData = xmlData.replace(/\r\n?/g, options.captureMetaData ? (newline, index) => {
+      if (newline.length === 2) {
+        crlfPositions.push(index - crlfPositions.length);
+      }
+      return "\n";
+    } : "\n");
     const xmlObj = new XmlNode("!xml");
     let currentNode = xmlObj;
     let textData = "";
@@ -3535,7 +3571,6 @@
     this.entityExpansionCount = 0;
     this.currentExpandedLength = 0;
     this.doctypefound = false;
-    const options = this.options;
     const docTypeReader = new DocTypeReader(options.processEntities);
     const xmlLen = xmlData.length;
     for (let i = 0; i < xmlLen; i++) {
@@ -3567,7 +3602,7 @@
           this.isCurrentNodeStopNode = false;
           currentNode = this.tagsNodeStack.pop() || xmlObj;
           if (options.captureMetaData && currentNode) {
-            currentNode.addEndIndex(closeIndex + 1);
+            currentNode.addEndIndex(getOriginalIndex(closeIndex + 1, crlfPositions));
           }
           textData = "";
           i = closeIndex;
@@ -3588,9 +3623,10 @@
             if (tagData.tagName !== tagData.tagExp && tagData.attrExpPresent && options.ignoreAttributes !== true) {
               childNode[":@"] = attsMap;
             }
-            this.addChild(currentNode, childNode, this.readonlyMatcher, i);
+            const startIndex = options.captureMetaData ? getOriginalIndex(i, crlfPositions) : i;
+            this.addChild(currentNode, childNode, this.readonlyMatcher, startIndex);
             if (options.captureMetaData) {
-              currentNode.addEndIndex(tagData.closeIndex + 2);
+              currentNode.addEndIndex(getOriginalIndex(tagData.closeIndex + 2, crlfPositions));
             }
           }
           i = tagData.closeIndex + 1;
@@ -3672,7 +3708,7 @@
           if (tagName !== xmlObj.tagname) {
             this.isCurrentNodeStopNode = this.isItStopNode();
           }
-          const startIndex = i;
+          const startIndex = options.captureMetaData ? getOriginalIndex(i, crlfPositions) : i;
           if (this.isCurrentNodeStopNode) {
             let tagContent = "";
             if (isSelfClosing) {
@@ -3694,7 +3730,7 @@
             this.isCurrentNodeStopNode = false;
             this.addChild(currentNode, childNode, this.readonlyMatcher, startIndex);
             if (options.captureMetaData) {
-              currentNode.addEndIndex(i + 1);
+              currentNode.addEndIndex(getOriginalIndex(i + 1, crlfPositions));
             }
           } else {
             if (isSelfClosing) {
@@ -3705,7 +3741,7 @@
               }
               this.addChild(currentNode, childNode, this.readonlyMatcher, startIndex);
               if (options.captureMetaData) {
-                currentNode.addEndIndex(closeIndex + 1);
+                currentNode.addEndIndex(getOriginalIndex(closeIndex + 1, crlfPositions));
               }
               this.matcher.pop();
               this.isCurrentNodeStopNode = false;
@@ -3716,7 +3752,7 @@
               }
               this.addChild(currentNode, childNode, this.readonlyMatcher, startIndex);
               if (options.captureMetaData) {
-                currentNode.addEndIndex(result.closeIndex + 1);
+                currentNode.addEndIndex(getOriginalIndex(result.closeIndex + 1, crlfPositions));
               }
               this.matcher.pop();
               this.isCurrentNodeStopNode = false;
@@ -3744,6 +3780,16 @@
     }
     return xmlObj.child;
   };
+  function getOriginalIndex(index, crlfPositions) {
+    let low = 0;
+    let high = crlfPositions.length;
+    while (low < high) {
+      const middle = Math.floor((low + high) / 2);
+      if (crlfPositions[middle] < index) low = middle + 1;
+      else high = middle;
+    }
+    return index + low;
+  }
   function addChild(currentNode, childNode, matcher, startIndex) {
     if (!this.options.captureMetaData) startIndex = void 0;
     const jPathOrMatcher = this.options.jPath ? matcher.toString() : matcher;
@@ -3870,6 +3916,8 @@
   function readStopNodeData(xmlData, tagName, i) {
     const startIndex = i;
     let openTagCount = 1;
+    let lenient = false;
+    let nextGt = -1;
     const xmllen = xmlData.length;
     for (; i < xmllen; i++) {
       if (xmlData[i] === "<") {
@@ -3897,13 +3945,27 @@
           const closeIndex = findClosingIndex(xmlData, "]]>", i, "StopNode is not closed.") - 2;
           i = closeIndex;
         } else {
-          const tagData = readTagExp(xmlData, i, false);
+          const tagData = lenient ? void 0 : readTagExp(xmlData, i, false);
           if (tagData) {
-            const openTagName = tagData && tagData.tagName;
+            const openTagName = tagData.tagName;
             if (openTagName === tagName && tagData.tagExp[tagData.tagExp.length - 1] !== "/") {
               openTagCount++;
             }
             i = tagData.closeIndex;
+          } else {
+            lenient = true;
+            if (nextGt < i) {
+              nextGt = xmlData.indexOf(">", i);
+              if (nextGt === -1) return;
+            }
+            const nextLt = xmlData.indexOf("<", i + 1);
+            if (nextLt === -1 || nextLt > nextGt) {
+              const exp = xmlData.substring(i + 1, nextGt);
+              const sep2 = exp.search(/\s/);
+              const name = sep2 === -1 ? exp : exp.substring(0, sep2);
+              if (name === tagName && exp[exp.length - 1] !== "/") openTagCount++;
+              i = nextGt;
+            }
           }
         }
       }
@@ -3943,7 +4005,7 @@
     return name;
   }
 
-  // node_modules/.bun/fast-xml-parser@5.11.2/node_modules/fast-xml-parser/src/xmlparser/node2json.js
+  // node_modules/.bun/fast-xml-parser@5.12.0/node_modules/fast-xml-parser/src/xmlparser/node2json.js
   var METADATA_SYMBOL2 = XmlNode.getMetaDataSymbol();
   function stripAttributePrefix(attrs, prefix) {
     if (!attrs || typeof attrs !== "object") return {};
@@ -4055,7 +4117,7 @@
     return false;
   }
 
-  // node_modules/.bun/fast-xml-parser@5.11.2/node_modules/fast-xml-parser/src/xmlparser/XMLParser.js
+  // node_modules/.bun/fast-xml-parser@5.12.0/node_modules/fast-xml-parser/src/xmlparser/XMLParser.js
   var XMLParser = class {
     constructor(options) {
       this.externalEntities = {};
@@ -4119,7 +4181,7 @@
     }
   };
 
-  // node_modules/.bun/fast-xml-parser@5.11.2/node_modules/fast-xml-parser/src/fxp.js
+  // node_modules/.bun/fast-xml-parser@5.12.0/node_modules/fast-xml-parser/src/fxp.js
   var XMLValidator = {
     validate
   };

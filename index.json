@@ -9,6 +9,7 @@
       "protocolVersion": 1,
       "bundleUrl": "server-kavita/",
       "sha256": "b314988fd53196c9cd4d0ff452cc8da13aade38fd4f726e0ce0dd73f05d87fb0",
+      "manifestSha256": "af5f0b313848c970cdc8f4c037e41d59a42df2d21d6ab2a10bd87525bdf73ec0",
       "developerName": "NovelReader",
       "supportUrl": "https://novelreader.mozsoftware.dev/support/",
       "contentRatingMinimumAge": 18,
@@ -24,6 +25,7 @@
       "privacyPolicyUrl": "https://novelreader.mozsoftware.dev/privacy/",
       "termsUrl": "https://novelreader.mozsoftware.dev/terms/",
       "homepageUrl": "https://novelreader.mozsoftware.dev/extensions/server-kavita/",
+      "iconSha256": "e8ec49231a2cd5a6f18e76b492bdb6bf0c9ff8008f05179400d80fea2a63719f",
       "icon": "server-kavita/kavita.png"
     },
     {
@@ -35,6 +37,7 @@
       "protocolVersion": 1,
       "bundleUrl": "server-komga/",
       "sha256": "ceec5d3b52ffdeb7aaa8f91d306b135cbbfc191235477665642e622ebac44918",
+      "manifestSha256": "2370ab84e7f2da14828f4b9ad7fe75f58cfab6c9e3424eb70db4153af204bf84",
       "developerName": "NovelReader",
       "supportUrl": "https://novelreader.mozsoftware.dev/support/",
       "contentRatingMinimumAge": 18,
@@ -50,6 +53,7 @@
       "privacyPolicyUrl": "https://novelreader.mozsoftware.dev/privacy/",
       "termsUrl": "https://novelreader.mozsoftware.dev/terms/",
       "homepageUrl": "https://novelreader.mozsoftware.dev/extensions/server-komga/",
+      "iconSha256": "2aae37567e14656bf4afffc31e0f54dbaf417dc9dddc2e83238d1b83f5a003c8",
       "icon": "server-komga/komga.svg"
     },
     {
@@ -60,7 +64,8 @@
       "type": "server",
       "protocolVersion": 1,
       "bundleUrl": "server-opds/",
-      "sha256": "368c43ae1563e251e2966a894a4344c8647c68d81d9eb5f0a4330a1385ecb6be",
+      "sha256": "b5e5b5fbe45f54e41cb7c24e14c689b1d7c8c0e52eaacd6dadb9a94943eaec53",
+      "manifestSha256": "7f75e4e9eff4688cf9950ed1e420fe096fb08a81656a11b06f1a9cb3b713d3f4",
       "developerName": "NovelReader",
       "supportUrl": "https://novelreader.mozsoftware.dev/support/",
       "contentRatingMinimumAge": 18,
@@ -76,6 +81,7 @@
       "privacyPolicyUrl": "https://novelreader.mozsoftware.dev/privacy/",
       "termsUrl": "https://novelreader.mozsoftware.dev/terms/",
       "homepageUrl": "https://novelreader.mozsoftware.dev/extensions/server-opds/",
+      "iconSha256": "d29fac86683ee9f6df07286752575f706419b668ed33a7bd885affb92b86bace",
       "icon": "server-opds/icon.png"
     }
   ]

@@ -64,7 +64,7 @@
       "type": "server",
       "protocolVersion": 1,
       "bundleUrl": "server-opds/",
-      "sha256": "6669c45a82b482f2cb1417a7eb08e85daa993378638cefad6e02501ed4501b5a",
+      "sha256": "e6fc09bb0dd73e2550c6c5acb422c5b3413ba411dc5359bd9fbf2edf9dd5564b",
       "manifestSha256": "3afd9ededa382a8984aa945d4ee1b504e84dc225f21b397e85c8cd7007780888",
       "developerName": "NovelReader",
       "supportUrl": "https://novelreader.mozsoftware.dev/support/",
